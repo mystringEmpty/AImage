@@ -1,0 +1,5 @@
+reply_nai_waiting: 正在为{nick}绘制，请稍作等待
+reply_nai_on: "{self}现开启群内绘画√"
+reply_nai_off: "{self}现关闭群内绘画√"
+reply_nai_ban: "{self}已禁用{tgt_chat}的AI绘画功能√"
+reply_nai_unban: "{self}已解禁{tgt_chat}的AI绘画功能√"
