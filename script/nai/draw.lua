@@ -23,10 +23,14 @@ local frmdata = {
     sampler_index = "Euler a" ,
     negative_prompt = "nsfw, lowres, text, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry, sex, missing arms,lowleg, missing legs, extra arms, extra legs"
 }
-msg:echo("{reply_nai_waiting}")
-local status, rcv_data = http.post(api, frmdata)
-if status then
-    return "[CQ:image,url=" .. rcv_data .. "]"
+if tags:find("full[%s_]*body") then
+    frmdata.height = 1024
 end
-log(rcv_data,0)
+local json = require("json")
+msg:echo("{reply_nai_waiting}")
+local status, rcv_data = http.post(api, json.encode(frmdata))
+if status then
+    return "[CQ:image,url=" .. rcv_data .. "]\n原图链接:"..rcv_data
+end
+log(rcv_data)
 return "访问网络失败!"..msg:format(rcv_data)
