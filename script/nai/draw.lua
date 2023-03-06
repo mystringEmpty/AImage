@@ -9,7 +9,7 @@ if #tags==0 then
 else
     hist[msg.fromUser] = tags
 end
-local api = "http://261090.proxy.nscc-gz.cn:8888/"
+local api = "https://ai-api.baimianxiao.cn/t2i/"
 local prompt = "masterpiece, best quality, " .. tags
 local frmdata = {
     prompt = prompt,

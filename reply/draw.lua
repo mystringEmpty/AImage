@@ -63,9 +63,11 @@ msg_reply.nai_ban = {
         local type,id = msg.suffix:match("^[%s]*([ug]?)[^%d]*(%d*)[%s]*$")
         if type=='g' then
             if #id==0 then return "{strGroupIDEmpty}" end
+            msg.tgt_chat = getGroupConf(id,"name").."("..id..")"
             setGroupConf(id,"nai_ban",true)
         else
             if #id==0 then return "{strUIDEmpty}" end
+            msg.tgt_chat = getUserConf(id,"name").."("..id..")"
             setUserConf(id,"nai_ban",true)
         end
         return "{reply_nai_ban}"
@@ -82,9 +84,11 @@ msg_reply.nai_unban = {
         local type,id = msg.suffix:match("^[%s]*([ug]?)[^%d]*(%d*)[%s]*$")
         if type=='g' then
             if #id==0 then return "{strGroupIDEmpty}" end
+            msg.tgt_chat = getGroupConf(id,"name").."("..id..")"
             setGroupConf(id,"nai_ban")
         else
             if #id==0 then return "{strUIDEmpty}" end
+            msg.tgt_chat = getUserConf(id,"name").."("..id..")"
             setUserConf(id,"nai_ban")
         end
         return "{reply_nai_unban}"
